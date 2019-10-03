@@ -1,7 +1,7 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="/">
-      PaymentIntents API
+      Stripe Checkout Demo
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,16 +11,6 @@
         <li class="nav-item <%= "active" if request.path_info == '/' %>">
           <a class="nav-link" href="/">Catologue</a>
         </li>
-        <% if !signed_up %>
-          <li class="nav-item <%= "active" if request.path_info == '/save-card' %>">
-            <a class="nav-link" href="/signup">Sign Up (Setup Intents API)</a>
-          </li>
-        <% end %>
-        <% if signed_up %>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
-          </li>
-        <% end %>
       </ul>
     </div>
   </nav>
