@@ -8,16 +8,11 @@
       <div class="card col col-md-6">
         <div class="card-body">
           <h3>
-            <%= @currentSA[:name] %>
+            <%= @currentSA[:name] %> (<%= @currentSA[:subtitle] %>)
             <div class="text-center">
               <img height=240px src="img/<%= @currentSA[:image] %>">
             </div>
           </h3>
-
-          <div class="">
-
-          </div>
-
           <a href="/update-startups" class="btn btn-primary mtm" data-loading="Passing the ball...">Pass the ball</a>
         </div>
 

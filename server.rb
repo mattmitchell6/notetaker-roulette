@@ -5,20 +5,22 @@ require 'sinatra/activerecord'
 
 require './models'
 
-class App < Sinatra::Base
+SAS = [{
+  :name => "Matt Mitchell",
+  :subtitle => "not a component lead",
+  :image => "mattmitchell.jpg"
+}, {
+  :name => "Govind Dandekar",
+  :subtitle => "component lead",
+  :image => "govind.jpg"
+}]
 
-  SAS = [{
-    :name => "Matt Mitchell", :image => "mattmitchell.jpg"
-  }, {
-    :name => "Govind Dandekar", :image => "govind.jpg"
-  }]
+class App < Sinatra::Base
 
   # Home route, fetch current SA
   get '/' do
     currentSA = RoundRobin.find(1)
-
     @currentSA = SAS.find {|sa| sa[:name] == currentSA.startups_sa}
-
     erb :index
   end
 
