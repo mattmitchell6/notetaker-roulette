@@ -7,5 +7,5 @@ gem 'rake'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 
-gem 'sqlite3', group :development
-gem 'pg' group :production
+gem 'sqlite3', :group => :development
+gem 'pg', :group => :production
