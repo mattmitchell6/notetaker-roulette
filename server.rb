@@ -3,7 +3,7 @@ require 'dotenv/load'
 require 'awesome_print'
 require 'sinatra/activerecord'
 
-require './models'
+require './models/round-robin'
 
 SAS = [{
   :name => "Matt Mitchell",
