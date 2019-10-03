@@ -3,8 +3,6 @@ require 'dotenv/load'
 require 'awesome_print'
 require 'sinatra/activerecord'
 
-set :database, "sqlite3:sa-round-robin.sqlite3"
-
 require './models'
 
 class App < Sinatra::Base
@@ -21,7 +19,7 @@ class App < Sinatra::Base
 
     @currentSA = SAS.find {|sa| sa[:name] == currentSA.startups_sa}
 
-    erb :index 
+    erb :index
   end
 
   # round robin to the next SA

@@ -1,2 +1,3 @@
 .env
+sa-round-robin.sqlite3
 Gemfile.lock
