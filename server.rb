@@ -21,7 +21,7 @@ class App < Sinatra::Base
 
     @currentSA = SAS.find {|sa| sa[:name] == currentSA.startups_sa}
 
-    erb :index
+    erb :index 
   end
 
   # round robin to the next SA
