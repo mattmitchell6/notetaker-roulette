@@ -38,7 +38,7 @@ SAS = [{
   :image => "natelinsky.jpg"
 }]
 
-# class App < Sinatra::Base
+class App < Sinatra::Base
 
   # Home route, fetch current SA
   get '/' do
@@ -65,4 +65,4 @@ SAS = [{
     erb :notetaker
   end
 
-# end
+end
