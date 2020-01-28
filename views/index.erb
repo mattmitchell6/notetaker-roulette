@@ -2,18 +2,12 @@
 <div class="row topspace-lg">
   <div class="col-md-12 text-center">
 
-    <h1>Who gets the next ticket?</h1>
+    <h1>Who will be taking notes?</h1>
 
     <div class="row justify-content-center">
       <div class="card col col-md-6">
         <div class="card-body">
-          <h3>
-            <%= @currentSA[:name] %> (<%= @currentSA[:subtitle] %>)
-            <div class="text-center">
-              <img height=240px src="img/<%= @currentSA[:image] %>">
-            </div>
-          </h3>
-          <a href="/update-startups" class="btn btn-primary mtm" data-loading="Passing the ball...">Pass the ball</a>
+          <a href="/notetaker" class="btn btn-primary mtm" data-loading="Selecting a winner...">Select a winner</a>
         </div>
 
       </div>
