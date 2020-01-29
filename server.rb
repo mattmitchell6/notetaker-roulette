@@ -10,32 +10,37 @@ use Rack::Session::Cookie, :key => 'rack.session',
 
 SAS = [{
   :name => "Matt Mitchell",
-  :subtitle => "not a component lead",
+  :subtitle => "matt",
   :image => "mattmitchell.jpg"
 }, {
   :name => "Govind Dandekar",
-  :subtitle => "component lead",
+  :subtitle => "govind",
   :image => "govind.jpg"
 }, {
   :name => "Dom Grillo",
-  :subtitle => "component lead",
+  :subtitle => "dom",
   :image => "dominic.jpg"
 }, {
   :name => "Adam Stevenson",
-  :subtitle => "component lead",
+  :subtitle => "adam",
   :image => "adam.jpg"
 }, {
   :name => "Russ Hudson",
-  :subtitle => "component lead",
+  :subtitle => "russ",
   :image => "russ.jpg"
 }, {
   :name => "Morgan Christian",
-  :subtitle => "component lead",
+  :subtitle => "morgan",
   :image => "morgan.jpg"
 }, {
   :name => "Nate Linsky",
-  :subtitle => "component lead",
+  :subtitle => "nate",
   :image => "natelinsky.jpg"
+}, {
+  :name => "Wildcard",
+  :subtitle => "wildcard",
+  :image => "marko.jpg",
+  :imageColor => "markoColor.jpg"
 }]
 
 class App < Sinatra::Base
@@ -59,8 +64,27 @@ class App < Sinatra::Base
   end
 
   get '/notetaker' do
-    @winner = SAS.sample
-    ap @winner
+    candidates = params[:candidates]
+
+    if (candidates)
+      candidates = candidates.split(',')
+      ap candidates
+      total = []
+      candidates.each do |candidate|
+        index = SAS.find_index { |sa| sa[:subtitle].eql? candidate }
+        if(index != nil)
+          total.push(SAS[index])
+        end
+      end
+      @winner = total.sample
+
+      # handle 0 results case
+      if(total.length == 0)
+        @winner = SAS.sample
+      end
+    else
+      @winner = SAS.sample
+    end
 
     erb :notetaker
   end

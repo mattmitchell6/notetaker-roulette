@@ -10,10 +10,10 @@
           <h3>
             <%= @winner[:name] %>!
             <div class="text-center">
-              <img height=240px src="img/<%= @winner[:image] %>">
+              <img id="winnerImage" height=240px src="img/<%= @winner[:image] %>">
             </div>
           </h3>
-          <a href="/notetaker" class="btn btn-primary mtm" data-loading="Shuffling...">Shuffle</a>
+          <button class="btn btn-primary mtm reload" data-loading="Shuffling...">Shuffle</button>
         </div>
 
       </div>
@@ -24,3 +24,20 @@
 </div>
 
 <script src="/js/helpers.js"></script>
+
+
+<script type="text/javascript">
+
+  var i = 0;
+  <% if @winner[:subtitle] == "wildcard" %>
+    setInterval(function() {
+      if(i % 2) {
+        document.getElementById("winnerImage").src = "img/<%= @winner[:image] %>"
+      } else {
+        document.getElementById("winnerImage").src = "img/<%= @winner[:imageColor] %>"
+      }
+      i++;
+    },500);
+  <% end %>
+
+</script>
