@@ -37,6 +37,10 @@ SAS = [{
   :subtitle => "nate",
   :image => "natelinsky.jpg"
 }, {
+  :name => "Chintan Sanghvi",
+  :subtitle => "chintan",
+  :image => "csanghvi.jpg"
+}, {
   :name => "Wildcard",
   :subtitle => "wildcard",
   :image => "marko.jpg",

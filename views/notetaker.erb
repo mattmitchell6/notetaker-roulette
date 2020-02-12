@@ -30,6 +30,7 @@
 
   var i = 0;
   <% if @winner[:subtitle] == "wildcard" %>
+    console.log('create wildcard...')
     setInterval(function() {
       if(i % 2) {
         document.getElementById("winnerImage").src = "img/<%= @winner[:image] %>"
