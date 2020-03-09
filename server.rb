@@ -41,10 +41,9 @@ SAS = [{
   :subtitle => "chintan",
   :image => "csanghvi.jpg"
 }, {
-  :name => "Wildcard",
-  :subtitle => "wildcard",
-  :image => "marko.jpg",
-  :imageColor => "markoColor.jpg"
+  :name => "David Santoso",
+  :subtitle => "david",
+  :image => "davidsantoso.jpg"
 }]
 
 class App < Sinatra::Base
