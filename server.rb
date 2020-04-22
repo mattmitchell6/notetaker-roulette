@@ -48,6 +48,14 @@ SAS = [{
   :name => "Karthik Nagarajan",
   :subtitle => "karthik",
   :image => "karthikn.jpg"
+}, {
+  :name => "Kirby Kohlmorgen",
+  :subtitle => "kirby",
+  :image => "kirby.jpg"
+}, {
+  :name => "Miles Matthias",
+  :subtitle => "miles",
+  :image => "miles.jpg"
 }]
 
 class App < Sinatra::Base

@@ -5,7 +5,6 @@ $(".btn").on("click", function() {
   $(this).html("<i class='fas fa-spinner fa-spin'></i> " + loadingMsg);
 });
 
-
 // reload function
 $(".btn.reload").on("click", function() {
   console.log('reloading...');
