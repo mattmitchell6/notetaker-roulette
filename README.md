@@ -1,13 +1,13 @@
-# Who gets the next ticket?
+# Who will be taking notes?
 
-A basic Sinatra app to determine whogetsthenextticket
+A basic Sinatra app to determine who will be taking notes
 
 ## Using this demo
 
 This demo is written in Ruby with the Sinatra framework. To get started, clone the repository locally and run bundler to install dependencies:
 
 ```
-git clone https://github.com/mattmitchell6/stripe-checkout-demo.git && cd whogetsthenextticket
+git clone https://github.com/mattmitchell6/sa-round-robin.git && cd sa-round-robin
 bundle install
 ```
 

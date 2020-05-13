@@ -56,32 +56,23 @@ SAS = [{
   :name => "Miles Matthias",
   :subtitle => "miles",
   :image => "miles.jpg"
+}, {
+  :name => "Jill Farnsworth",
+  :subtitle => "jill",
+  :image => "jill.jpg"
 }]
 
 class App < Sinatra::Base
 
-  # Home route, fetch current SA
+  # Home route
   get '/' do
-    # currentSA = RoundRobin.find(1)
-    # @currentSA = SAS.find {|sa| sa[:name] == currentSA.startups_sa}
     erb :index
-  end
-
-  # round robin to the next SA
-  get '/update-startups' do
-    # currentSA = RoundRobin.find(1)
-    # newCount = currentSA.startups_count + 1
-    # newSA = SAS[newCount % 2]
-    #
-    # RoundRobin.update(1, :startups_count => newCount, :startups_sa => newSA[:name])
-
-    redirect '/'
   end
 
   get '/notetaker' do
     candidates = params[:candidates]
 
-    if (candidates)
+    if(candidates)
       candidates = candidates.split(',')
       ap candidates
       total = []
