@@ -1,68 +1,14 @@
 require 'sinatra'
 require 'dotenv/load'
 require 'awesome_print'
-# require 'sinatra/activerecord'
-
-# require './models/round-robin'
+require 'json'
 use Rack::Session::Cookie, :key => 'rack.session',
                            :path => '/',
                            :secret => 'SecureRandom.hex(64)'
 
-SAS = [{
-  :name => "Matt Mitchell",
-  :subtitle => "matt",
-  :image => "mattmitchell.jpg"
-}, {
-  :name => "Govind Dandekar",
-  :subtitle => "govind",
-  :image => "govind.jpg"
-}, {
-  :name => "Dom Grillo",
-  :subtitle => "dom",
-  :image => "dominic.jpg"
-}, {
-  :name => "Adam Stevenson",
-  :subtitle => "adam",
-  :image => "adam.jpg"
-}, {
-  :name => "Russ Hudson",
-  :subtitle => "russ",
-  :image => "russ.jpg"
-}, {
-  :name => "Morgan Christian",
-  :subtitle => "morgan",
-  :image => "morgan.jpg"
-}, {
-  :name => "Nate Linsky",
-  :subtitle => "nate",
-  :image => "natelinsky.jpg"
-}, {
-  :name => "Chintan Sanghvi",
-  :subtitle => "chintan",
-  :image => "csanghvi.jpg"
-}, {
-  :name => "David Santoso",
-  :subtitle => "david",
-  :image => "davidsantoso.jpg"
-}, {
-  :name => "Karthik Nagarajan",
-  :subtitle => "karthik",
-  :image => "karthikn.jpg"
-}, {
-  :name => "Kirby Kohlmorgen",
-  :subtitle => "kirby",
-  :image => "kirby.jpg"
-}, {
-  :name => "Miles Matthias",
-  :subtitle => "miles",
-  :image => "miles.jpg"
-}, {
-  :name => "Jill Farnsworth",
-  :subtitle => "jill",
-  :image => "jill.jpg"
-}]
-
 class App < Sinatra::Base
+
+  teamMembers = JSON.parse(File.read('team_members.json'))
 
   # Home route
   get '/' do
@@ -86,10 +32,11 @@ class App < Sinatra::Base
 
       # handle 0 results case
       if(total.length == 0)
-        @winner = SAS.sample
+        @winner = teamMembers.sample
       end
     else
-      @winner = SAS.sample
+      @winner = teamMembers.sample
+      ap @winner
     end
 
     erb :notetaker
