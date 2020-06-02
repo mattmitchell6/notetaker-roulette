@@ -15,19 +15,21 @@ class App < Sinatra::Base
     erb :index
   end
 
+  # Calculate notetaker
   get '/notetaker' do
     candidates = params[:candidates]
 
     if(candidates)
       candidates = candidates.split(',')
-      ap candidates
       total = []
+
       candidates.each do |candidate|
         index = SAS.find_index { |sa| sa[:subtitle].eql? candidate }
         if(index != nil)
           total.push(SAS[index])
         end
       end
+      
       @winner = total.sample
 
       # handle 0 results case
