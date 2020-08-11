@@ -1,53 +1,85 @@
 [{
-  "name": "Matt Mitchell",
-  "subtitle": "matt",
-  "image": "mattmitchell.jpg"
-}, {
-  "name": "Govind Dandekar",
-  "subtitle": "govind",
-  "image": "govind.jpg"
-}, {
-  "name": "Dom Grillo",
-  "subtitle": "dom",
-  "image": "dominic.jpg"
-}, {
-  "name": "Adam Stevenson",
-  "subtitle": "adam",
-  "image": "adam.jpg"
-}, {
-  "name": "Russ Hudson",
-  "subtitle": "russ",
-  "image": "russ.jpg"
-}, {
-  "name": "Morgan Christian",
-  "subtitle": "morgan",
-  "image": "morgan.jpg"
-}, {
-  "name": "Nate Linsky",
-  "subtitle": "nate",
-  "image": "natelinsky.jpg"
-}, {
-  "name": "Chintan Sanghvi",
-  "subtitle": "chintan",
-  "image": "csanghvi.jpg"
-}, {
-  "name": "David Santoso",
-  "subtitle": "david",
-  "image": "davidsantoso.jpg"
-}, {
-  "name": "Karthik Nagarajan",
-  "subtitle": "karthik",
-  "image": "karthikn.jpg"
-}, {
-  "name": "Kirby Kohlmorgen",
-  "subtitle": "kirby",
-  "image": "kirby.jpg"
-}, {
-  "name": "Miles Matthias",
-  "subtitle": "miles",
-  "image": "miles.jpg"
-}, {
-  "name": "Jill Farnsworth",
+  "name": "Ashley Quan",
+  "subtitle": "aquan",
+  "image": "aquan.jpg"
+},{
+  "name": "Bo Wright",
+  "subtitle": "bo",
+  "image": "bo.jpg"
+},{
+  "name": "Daniel Nichols",
+  "subtitle": "dnichols",
+  "image": "dnichols.jpg"
+},{
+  "name": "Jillian Campbell",
   "subtitle": "jill",
   "image": "jill.jpg"
+},{
+  "name": "Kanishk Desai",
+  "subtitle": "kd",
+  "image": "kd.jpg"
+},{
+  "name": "Kelly Loftus",
+  "subtitle": "kellyloftus",
+  "image": "kellyloftus.jpg"
+},{
+  "name": "Kevin Hollingshead",
+  "subtitle": "kch",
+  "image": "kch.jpg"
+},{
+  "name": "MacKenzie Bosmeny",
+  "subtitle": "mack",
+  "image": "mack.jpg"
+},{
+  "name": "Tamar Bardin",
+  "subtitle": "tamar",
+  "image": "tamar.jpg"
+},{
+  "name": "Ujjwal Thukral",
+  "subtitle": "ujjwalt",
+  "image": "ujjwalt.jpg"
+},{
+  "name": "Alison Schwartzstein",
+  "subtitle": "schwartzstein",
+  "image": "schwartzstein.jpg"
+},{
+  "name": "Ally Huchro",
+  "subtitle": "allyhuchro",
+  "image": "allyhuchro.jpg"
+},{
+  "name": "Brian Sherman",
+  "subtitle": "briansherman",
+  "image": "briansherman.jpg"
+},{
+  "name": "Connor Holloway",
+  "subtitle": "cholloway",
+  "image": "cholloway.jpg"
+},{
+  "name": "Griffin Renker",
+  "subtitle": "grenker",
+  "image": "grenker.jpg"
+},{
+  "name": "Jono Keedy",
+  "subtitle": "jkeedy",
+  "image": "jkeedy.jpg"
+},{
+  "name": "Matthew Duffy",
+  "subtitle": "mduffy",
+  "image": "mduffy.jpg"
+},{
+  "name": "Micah McCree",
+  "subtitle": "micah",
+  "image": "micah.jpg"
+},{
+  "name": "Molly Duda",
+  "subtitle": "duda",
+  "image": "duda.jpg"
+},{
+  "name": "Nathan Skarie",
+  "subtitle": "nskarie",
+  "image": "nskarie.jpg"
+},{
+  "name": "Thomas Reishus",
+  "subtitle": "treishus",
+  "image": "treishus.jpg"
 }]
