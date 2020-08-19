@@ -24,12 +24,12 @@ class App < Sinatra::Base
       total = []
 
       candidates.each do |candidate|
-        index = SAS.find_index { |sa| sa[:subtitle].eql? candidate }
+        index = teamMembers.find_index { |sa| sa["subtitle"].eql? candidate }
         if(index != nil)
-          total.push(SAS[index])
+          total.push(teamMembers[index])
         end
       end
-      
+
       @winner = total.sample
 
       # handle 0 results case
