@@ -1,0 +1,41 @@
+<div class="row topspace-lg">
+  <div class="col-md-12">
+
+    <h1>Manage Team members</h1>
+
+    <h3 class="mtm">Create a new member</h3>
+    <hr>
+    <form action="<%= "/" + @team.id.to_s + "/create-member"%>" method="post">
+      <div class="form-group">
+        <label>Member full name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="NASA">
+      </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <h3 class="mtm">Team members</h3>
+    <hr class="mbm">
+
+    <div class="row"> 
+      <% if @members && @members.length > 0 %>
+        <% @members.each do |member| %>
+          <div class="card col-3" style="margin: 10px 0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-8">
+                  <h5 class="card-title"><%= member.full_name %></h5>
+                </div>
+                <div class="col-4">
+                  <a href="/delete/<%= team.id %>" class="btn btn-danger pull-right">Delete</a>
+                </div>
+              </div>        
+            </div>
+          </div>
+        <% end %>     
+      <% else %>
+        <p class="col-12">You don't have any members on your team. Add members above.</p>
+      <% end %>  
+    </div>
+  
+  </div>
+</div>
