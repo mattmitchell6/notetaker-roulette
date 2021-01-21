@@ -6,7 +6,7 @@ gem 'rake'
 gem 'sass', '3.2.1'
 gem 'activerecord'
 gem 'sinatra-activerecord'
-
+gem 'carrierwave', '~> 2.0'
 
 group :development do
   gem 'shotgun'

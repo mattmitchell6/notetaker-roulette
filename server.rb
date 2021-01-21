@@ -3,6 +3,10 @@ require "sinatra/activerecord"
 require 'dotenv/load'
 require 'awesome_print'
 require 'json'
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+
+require './helpers/image_uploader'
 require './models/team'
 require './models/member'
 
@@ -11,8 +15,6 @@ use Rack::Session::Cookie, :key => 'rack.session',
                            :secret => 'SecureRandom.hex(64)'
 
 class App < Sinatra::Base
-
-  teamMembers = JSON.parse(File.read('team_members.json'))
 
   # Home route
   get '/' do
@@ -26,28 +28,33 @@ class App < Sinatra::Base
   post '/create-team' do
     teamName = params[:name]
     url = teamName.gsub(/[^a-zA-Z0-9\-]/,"").downcase
+
     Team.create(name: teamName, url: url)
+
     redirect '/'
   end
 
   # Create new member
-  post '/:teamId/create-member' do
-    memberName = params[:name]
-    teamId = params[:teamId]
-    
-    url = teamName.gsub(/[^a-zA-Z0-9\-]/,"").downcase
-    Team.create(name: teamName, url: url)
+  post '/:team/create-member' do 
+    teamName = params[:team]
 
-    redirect '/'
+    member = Member.new
+
+    member.full_name = params[:name]
+    member.team_id = params[:teamId]
+    member.first_name = params[:name].gsub(/[^a-zA-Z0-9\-]/,"").downcase    
+    member.image = params[:file]
+
+    # save
+    member.save!    
+
+    # Member.create(team_id: teamId, full_name: memberName, first_name: shortname)
+
+    redirect '/' + teamName + '/manage-members'
   end  
 
-  # Admin route
-  # get '/admin' do
-  #   erb :admin
-  # end
-
   # Delete team
-  get '/delete/:id' do
+  get '/delete-team/:id' do
     teamId = params[:id]
     
     Team.delete(teamId)
@@ -55,56 +62,77 @@ class App < Sinatra::Base
     redirect '/'
   end
 
+  # Delete member
+  get '/:team/delete-member/:id' do
+    memberId = params[:id]
+    @teamName = params[:team]
+    
+    Member.delete(memberId)
+
+    redirect '/' + @teamName + '/manage-members'
+  end  
+
   # Manage members route
   get '/:team/manage-members' do
-    @team = Team.find_by(url: params[:team])
+    @teamName = params[:team]
+    @team = Team.find_by(url: @teamName)
 
     # redirect to home page if team doesn't exist
     if(!@team)
       redirect '/'
     end
 
-    @members = Member.find_by(team_id: @team[:id])
+    @members = Member.where(team_id: @team[:id])
 
     erb :managemembers
   end
 
   # Base team route
   get '/:team' do
-    team = Team.find_by(url: params[:team])
-    ap team
+    @teamName = params[:team]
+    team = Team.find_by(url: @teamName)
 
     # redirect to home page if team doesn't exist
     if(!team)
       redirect '/'
     end
 
-    members = Member.find_by(team_id: team[:id])
+    members = Member.where(team_id: team[:id])
 
-    if(members)
-      ap members
+    if(!members.empty?)
       erb :team_base
     else
-      ap members
       redirect '/' + team[:url] + '/manage-members'
     end
-    
-    
   end
 
 
   # Calculate notetaker
-  get '/notetaker' do
+  get '/:team/notetaker' do
+    @teamName = params[:team]
     candidates = params[:candidates]
+    team = Team.find_by(url: @teamName)
+
+    # redirect to home page if team doesn't exist
+    if(!team)
+      redirect '/'
+    end
+
+    members = Member.where(team_id: team[:id])
+
+    if(members.empty?)
+      redirect '/' + team[:url] + '/manage-members'
+    end
 
     if(candidates)
+      ap candidates
       candidates = candidates.split(',')
       total = []
 
       candidates.each do |candidate|
-        index = teamMembers.find_index { |sa| sa["subtitle"].eql? candidate }
+        index = members.find_index { |sa| sa["first_name"].eql? candidate }
         if(index != nil)
-          total.push(teamMembers[index])
+          total.push(members[index])
         end
       end
 
@@ -112,10 +140,10 @@ class App < Sinatra::Base
 
       # handle 0 results case
       if(total.length == 0)
-        @winner = teamMembers.sample
+        @winner = members.sample
       end
     else
-      @winner = teamMembers.sample
+      @winner = members.sample
       ap @winner
     end
 

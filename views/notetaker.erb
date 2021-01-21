@@ -8,12 +8,12 @@
       <div class="card col col-md-6">
         <div class="card-body">
           <h3>
-            <%= @winner["name"] %>!
+            <%= @winner[:full_name] %>!
             <div class="text-center">
-              <img id="winnerImage" height=240px src="img/<%= @winner["image"] %>">
+              <img id="winnerImage" height=240px src="<%= @winner.image.url %>">
             </div>
           </h3>
-          <a href="/notetaker" class="btn btn-primary" id="select-winner" data-loading="Shuffling...">Shuffle</a>
+          <a href="/<%= @teamName %>/notetaker" class="btn btn-primary" id="select-winner" data-loading="Shuffling...">Shuffle</a>
         </div>
 
       </div>

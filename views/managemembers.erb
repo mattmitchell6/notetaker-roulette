@@ -2,33 +2,47 @@
   <div class="col-md-12">
 
     <h1>Manage Team members</h1>
+    <p class="text-muted"><%= @team.name %></p>
 
-    <h3 class="mtm">Create a new member</h3>
+    <h3 class="mtm">Add a new member</h3>
     <hr>
-    <form action="<%= "/" + @team.id.to_s + "/create-member"%>" method="post">
+    <form action="/<%= @team.url %>/create-member" method="post" enctype="multipart/form-data">
       <div class="form-group">
-        <label>Member full name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="NASA">
+        <label>Name</label>        
+        <input type="text" class="form-control" id="name" name="name" placeholder="Jane Doe" required>
+
+          <div class="form-group mts">
+            <label >Photo</label>
+            <input type='file' name='file' class="form-control-file" required>
+          </div>        
+
+        <input type="hidden" name="teamId" value="<%= @team.id %>">
       </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary mts">Submit</button>
     </form>
 
     <h3 class="mtm">Team members</h3>
     <hr class="mbm">
 
-    <div class="row"> 
+    <div class="row mbm"> 
       <% if @members && @members.length > 0 %>
         <% @members.each do |member| %>
-          <div class="card col-3" style="margin: 10px 0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-8">
-                  <h5 class="card-title"><%= member.full_name %></h5>
-                </div>
-                <div class="col-4">
-                  <a href="/delete/<%= team.id %>" class="btn btn-danger pull-right">Delete</a>
-                </div>
-              </div>        
+          <div class="col-3">
+            <div class="card" style="margin: 10px 0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12">                    
+                    <h5 class="card-title"><%= member.full_name %></h5>                            
+                    <img class="card-img-top" src="<%= member.image.url %>" alt="">        
+                    <div>
+                      <i><%= member.first_name %></i>
+                    </div>                      
+                    <a href="/<%= @team.url %>/delete-member/<%= member.id %>" class="btn btn-danger mtm">Delete</a>
+                  </div>
+                  <div class="col-4">                    
+                  </div>
+                </div>        
+              </div>
             </div>
           </div>
         <% end %>     

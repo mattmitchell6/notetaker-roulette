@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_030539) do
     t.integer "team_id"
     t.string "full_name"
     t.string "first_name"
+    t.string "image"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["team_id"], name: "index_members_on_team_id"
