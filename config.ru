@@ -7,4 +7,4 @@ require_relative './config/environment'
 Sass::Plugin.options[:style] = :compressed
 use Sass::Plugin::Rack
 
-run App
+run Sinatra::Application
