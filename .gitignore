@@ -1,2 +1,4 @@
 .env
 /.sass-cache
+
+/public/uploads
