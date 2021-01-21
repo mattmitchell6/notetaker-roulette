@@ -74,6 +74,7 @@ DEPENDENCIES
   carrierwave (~> 2.0)
   dotenv
   pg
+  rack
   rake
   sass (= 3.2.1)
   shotgun
