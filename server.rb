@@ -5,6 +5,7 @@ require 'awesome_print'
 require 'json'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
+require 'cloudinary'
 
 require './helpers/image_uploader'
 require './models/team'
